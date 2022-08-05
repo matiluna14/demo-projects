@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./quiz-app.component.css" />
+    <title>Quiz App</title>
+  </head>
+  <body>
+    <div class="quiz-container" id="quiz">
+
+      <div class="quiz-header">
+        <h2 id="question">{{pregunta}}</h2>
+
+
+        <form [formGroup]="miFormulario" (ngSubmit)="enviar()">
+            <ul>
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               value="a"
+                               formControlName="respuesta"
+                               id="radioOpcion1">
+                        
+                        <label class="form-check-label" for="radioOpcion1">{{opcion1}}</label>
+                    </div>
+                   
+                </li>
+
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               value="b"
+                               formControlName="respuesta"
+                               id="radioOpcion2">
+                        
+                        <label class="form-check-label" for="radioOpcion2">{{opcion2}}</label>
+                    </div>
+                   
+                </li>
+
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               value="c"
+                               formControlName="respuesta"
+                               id="radioOpcion3">
+                        
+                        <label class="form-check-label" for="radioOpcion3">{{opcion3}}</label>
+                    </div>
+                    
+                </li>
+
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               value="d"
+                               formControlName="respuesta"
+                               id="radioOpcion4">
+                        
+                        <label class="form-check-label" for="radioOpcion4">{{opcion4}}</label>
+                    </div>
+                
+                   
+                </li>
+            </ul>
+        </form>
+
+      </div>
+      <button 
+            class="btn btn-primary"
+            id="submit"
+            (click)="enviar()"
+            [disabled]="miFormulario.invalid">
+            Submit
+      </button>
+    </div>
+    
+  </body>
+</html>
