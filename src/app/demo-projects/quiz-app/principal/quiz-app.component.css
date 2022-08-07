@@ -69,3 +69,8 @@ button:focus {
   background-color: #5e3370;
 }
 */
+
+.toast-body{
+  text-align: center;
+  color: green;
+}

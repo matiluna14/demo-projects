@@ -11,7 +11,7 @@ const routes: Routes = [
 
   {
     path: 'quiz',
-    loadChildren: () => import('./demo-projects/quiz-app/principal/principal.module').then(m => m.PrincipalModule)
+    loadChildren: () => import('./demo-projects/quiz-app/quizapp.module').then(m => m.quizappModule)
   },
 
   {

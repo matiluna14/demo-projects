@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PrincipalModule } from './demo-projects/quiz-app/principal/principal.module';
-import { Router, RouterModule } from '@angular/router';
+
+import { RouterModule } from '@angular/router';
 import { DemoProjectsDashboardComponent } from './demo-projects/demo-projects-dashboard/demo-projects-dashboard.component';
+import { quizappModule } from './demo-projects/quiz-app/quizapp.module';
+
 
 
 
@@ -17,8 +19,8 @@ import { DemoProjectsDashboardComponent } from './demo-projects/demo-projects-da
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PrincipalModule,
-    RouterModule
+    RouterModule,
+    quizappModule
   ],
   providers: [],
   bootstrap: [AppComponent]

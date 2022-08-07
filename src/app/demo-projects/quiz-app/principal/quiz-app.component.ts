@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { QuizData } from '../interfaces/quizAppInterfaces';
 import { QuizappService } from '../services/quizapp.service';
+
+
+import * as bootstrap from 'bootstrap'; //npm i --save-dev @types/bootstrap
 
 @Component({
   selector: 'app-quiz-app',
@@ -32,10 +36,9 @@ export class QuizAppComponent implements OnInit {
   opcion3: string = "";
   opcion4: string = "";
 
-
+  tipoRes: string = "";
 
   
-
   ngOnInit(): void {
     this.obtenerQuizArray();
     this.loadPreguntas();
@@ -94,10 +97,14 @@ export class QuizAppComponent implements OnInit {
 
     if( respuesta === this.quizArray[this.current].correct ){
       console.log("Tu respuesta es correcta");
+      this.tipoRes = "Correcta"
       this.quizappService.aumentarScore();
     }else{
       console.log("Tu respuesta es incorrecta")
+      this.tipoRes = "Incorrecta"
     }
+
+    this.mostrarToast();
     
     console.log( this.quizappService.obtenerScore() )
 
@@ -109,16 +116,42 @@ export class QuizAppComponent implements OnInit {
       this.loadPreguntas();
     } else{
       console.log('FIN');
-      this.router.navigateByUrl('/quiz/resultados')
+
+      
+      setTimeout(() => {
+        this.irAPaginaResultados();
+       }, 1000); 
+           
     }
 
 
-    
-    
-
-    
-
   }
+
+
+  
+  irAPaginaResultados(){
+    this.router.navigateByUrl('/quiz/resultados');
+  }
+
+
+  mostrarToast(){
+    const toastLiveExample = document.getElementById('liveToast')!
+    const toast = new bootstrap.Toast(toastLiveExample)
+
+    toast.show()
+  }
+
+
+  //esta funcion cambiar el color del texto que aparece en la toast, cuando la respuesta es "Correcta" el color es verde y cuando la respuesta es "Incorrecta" el color es rojo
+  cambiarColorBodyToast(){
+    if(this.tipoRes === "Correcta"){
+      return `green`;
+    }else{
+      return `red`;
+    }
+  }
+
+  
 
 
 
