@@ -48,6 +48,15 @@ export class QuizappService {
       c: "1994",
       d: "ninguno de los anteriores",
       correct: "b"
+    },
+
+    {
+      question: "¿Qué es un API?",
+      a: "Un conjunto de funciones que ofrece cierta biblioteca para ser utilizada por otro software",
+      b: "Una base de datos",
+      c: "Una variable especial en JavaScript",
+      d: "Un entorno de desarrollo",
+      correct: "a"
     }
 
   ];

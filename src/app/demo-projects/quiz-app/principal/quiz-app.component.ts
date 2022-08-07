@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { QuizData } from '../interfaces/quizAppInterfaces';
 import { QuizappService } from '../services/quizapp.service';
 
 
-import * as bootstrap from 'bootstrap'; //npm i --save-dev @types/bootstrap
+
 
 @Component({
   selector: 'app-quiz-app',
@@ -36,7 +35,7 @@ export class QuizAppComponent implements OnInit {
   opcion3: string = "";
   opcion4: string = "";
 
-  tipoRes: string = "";
+  tipoRes: string = "";  //se utiliza para determina que icono se mostrará
 
   
   ngOnInit(): void {
@@ -97,14 +96,13 @@ export class QuizAppComponent implements OnInit {
 
     if( respuesta === this.quizArray[this.current].correct ){
       console.log("Tu respuesta es correcta");
-      this.tipoRes = "Correcta"
+      this.tipoRes = "Correcta" //se utiliza para determina que icono se mostrará
       this.quizappService.aumentarScore();
     }else{
       console.log("Tu respuesta es incorrecta")
-      this.tipoRes = "Incorrecta"
+      this.tipoRes = "Incorrecta" //se utiliza para determina que icono se mostrará
     }
 
-    this.mostrarToast();
     
     console.log( this.quizappService.obtenerScore() )
 
@@ -112,12 +110,11 @@ export class QuizAppComponent implements OnInit {
     this.obtenerCurrent();
 
     if( this.current < this.quizArray.length ){
-      
       this.loadPreguntas();
     } else{
       console.log('FIN');
 
-      
+      //luego de 1seg se redirecciona a la pagina de resultados
       setTimeout(() => {
         this.irAPaginaResultados();
        }, 1000); 
@@ -134,22 +131,16 @@ export class QuizAppComponent implements OnInit {
   }
 
 
-  mostrarToast(){
-    const toastLiveExample = document.getElementById('liveToast')!
-    const toast = new bootstrap.Toast(toastLiveExample)
-
-    toast.show()
-  }
 
 
-  //esta funcion cambiar el color del texto que aparece en la toast, cuando la respuesta es "Correcta" el color es verde y cuando la respuesta es "Incorrecta" el color es rojo
-  cambiarColorBodyToast(){
-    if(this.tipoRes === "Correcta"){
-      return `green`;
-    }else{
-      return `red`;
+    //esta funcion cambiar el color del icono, cuando la respuesta es "Correcta" el color es verde y cuando la respuesta es "Incorrecta" el color es rojo
+    cambiarColorIcono(){
+      if(this.tipoRes === "Correcta"){
+        return `green`;
+      }else{
+        return `red`;
+      }
     }
-  }
 
   
 

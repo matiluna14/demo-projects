@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizappService } from '../services/quizapp.service';
 
+
 @Component({
   selector: 'app-resultados',
   templateUrl: './resultados.component.html',
